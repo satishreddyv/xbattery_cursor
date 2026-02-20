@@ -2,24 +2,46 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug (J-Link)",
+            "name": "Debug S32K144 (J-Link)",
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "jlink",
             "device": "S32K144",
             "interface": "swd",
-            "executable": "${workspaceFolder}/build/xbattery_cursor.elf",
-            "preLaunchTask": "Build",
+            "executable": "${workspaceFolder}/build/s32k144/xbattery_cursor.elf",
+            "preLaunchTask": "Build (S32K144)",
             "armToolchainPath": "",
             "serverpath": ""
         },
         {
-            "name": "Debug (OpenOCD)",
+            "name": "Debug S32K344 (J-Link)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "jlink",
+            "device": "S32K344",
+            "interface": "swd",
+            "executable": "${workspaceFolder}/build/s32k344/xbattery_cursor.elf",
+            "preLaunchTask": "Build (S32K344)",
+            "armToolchainPath": "",
+            "serverpath": ""
+        },
+        {
+            "name": "Debug S32K144 (OpenOCD)",
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "openocd",
-            "executable": "${workspaceFolder}/build/xbattery_cursor.elf",
-            "preLaunchTask": "Build",
+            "executable": "${workspaceFolder}/build/s32k144/xbattery_cursor.elf",
+            "preLaunchTask": "Build (S32K144)",
+            "armToolchainPath": "",
+            "openOCDLaunchFile": ""
+        },
+        {
+            "name": "Debug S32K344 (OpenOCD)",
+            "type": "cortex-debug",
+            "request": "launch",
+            "servertype": "openocd",
+            "executable": "${workspaceFolder}/build/s32k344/xbattery_cursor.elf",
+            "preLaunchTask": "Build (S32K344)",
             "armToolchainPath": "",
             "openOCDLaunchFile": ""
         }

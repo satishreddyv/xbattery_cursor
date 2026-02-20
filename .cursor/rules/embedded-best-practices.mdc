@@ -1,15 +1,22 @@
----
-description: Embedded C and project conventions for Xbattery S32K
+﻿---
+description: Embedded C and project conventions for Xbattery S32K (S32K1xx and S32K3xx/4xx)
 globs: "**/*.c,**/*.h"
 alwaysApply: false
 ---
 
 # Embedded Best Practices (Xbattery S32K)
 
-- **Hardware registers**: Always use `volatile` when accessing device registers (e.g. `*(volatile uint32_t *)ADDR`).
-- **No dynamic allocation in safety paths**: Avoid `malloc`/`free` in interrupts and critical code; use static or pool allocation.
-- **Use `static` and `const`**: Prefer `static` for file-local functions/variables; use `const` for read-only data and pointer targets.
-- **Stack and heap**: Respect linker-defined stack size; avoid large stack-allocated buffers; document heap use if used.
-- **Naming**: Use clear names for ISRs (e.g. `UART0_IRQHandler`); keep register/bit names aligned with the S32K reference manual.
-- **Project layout**: Application code in `src/`; startup and linker script in `startup/`; follow existing include paths.
-- **Company**: Xbattery. Keep comments and module headers consistent with this project.
+## Multi-target awareness
+- S32K1xx files use `MCU_S32K1XX` define; S32K3xx/4xx use `MCU_S32K3XX`.
+- Use `#ifdef MCU_S32K3XX` guards for M7-specific code (cache, TCM, lockstep).
+- Startup: S32K1xx has a Flash Config Block at 0x400; S32K3xx/4xx does NOT.
+
+## Core rules
+- **Hardware registers**: Always use `volatile` (e.g. `*(volatile uint32_t *)ADDR`).
+- **No dynamic allocation in safety paths**: Avoid `malloc`/`free` in interrupts and critical code.
+- **Use `static` and `const`**: `static` for file-local symbols; `const` for read-only data.
+- **Stack and heap**: Respect linker-defined sizes (M4: 0x800 stack, M7: 0x2000 stack).
+- **Naming**: ISRs named `<Peripheral>_IRQHandler`; registers match NXP reference manual names.
+- **Cortex-M7 cache**: If D-cache is enabled, ensure cache maintenance before DMA operations.
+- **Project layout**: `src/` for app code; `startup/` for per-MCU startup and linker scripts.
+- **Company**: Xbattery. Keep file headers consistent with this project.

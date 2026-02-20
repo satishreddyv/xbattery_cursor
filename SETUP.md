@@ -134,3 +134,52 @@ Install [SEGGER J-Link](https://www.segger.com/downloads/jlink/), connect the S3
 | Developer guide | SETUP.md | This file |
 | Toolchain check | scripts/check_toolchain.ps1 | Verify before first build |
 | Git hygiene | .gitignore | Excludes uild/, binaries, local overrides |
+
+
+---
+
+## Multi-target build (S32K1xx and S32K3xx/4xx)
+
+This workspace supports both MCU families via `-DTARGET_MCU=<variant>`.
+
+### Supported variants
+
+| Family | Core | Variants | Build dir |
+|---|---|---|---|
+| S32K1xx | Cortex-M4F | S32K142, S32K144, S32K146, S32K148 | `build/s32k144` |
+| S32K3xx/4xx | Cortex-M7 | S32K312, S32K314, S32K344, S32K358, S32K388 | `build/s32k344` |
+
+### Build S32K144 (default)
+
+```powershell
+cmake -B build/s32k144 -S . -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake -DTARGET_MCU=S32K144 -G Ninja
+cmake --build build/s32k144
+```
+
+Or use task: **Build (S32K144)** in Cursor.
+
+### Build S32K344 (S32K3xx/4xx)
+
+```powershell
+cmake -B build/s32k344 -S . -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake -DTARGET_MCU=S32K344 -G Ninja
+cmake --build build/s32k344
+```
+
+Or use task: **Build (S32K344)** in Cursor.
+
+### Debug
+
+Select the matching launch configuration in Cursor (F5):
+- **Debug S32K144 (J-Link)** â€” connects to S32K1xx board
+- **Debug S32K344 (J-Link)** â€” connects to S32K3xx/4xx board
+
+### Key differences S32K1xx â†’ S32K3xx/4xx
+
+| | S32K1xx | S32K3xx/4xx |
+|---|---|---|
+| CPU flags | `-mcpu=cortex-m4 -mfpu=fpv4-sp-d16` | `-mcpu=cortex-m7 -mfpu=fpv5-d16` |
+| Flash base | `0x00000000` | `0x00400000` |
+| Flash Config Block | Yes (16 B at `0x400`) | No (uses IVT/Boot Header) |
+| FPU | Single-precision | Double-precision |
+| D-cache | No | Yes (enable in SystemInit if needed) |
+| Stack size | 2 KB | 8 KB |

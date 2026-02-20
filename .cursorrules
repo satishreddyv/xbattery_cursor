@@ -1,4 +1,9 @@
-﻿This is an NXP S32K144 embedded project for Xbattery.
+﻿This is an NXP S32K multi-target embedded project for Xbattery.
+Supported MCU families:
+  - S32K1xx (Cortex-M4F): S32K142, S32K144, S32K146, S32K148
+  - S32K3xx/4xx (Cortex-M7): S32K312, S32K314, S32K322, S32K324, S32K344, S32K358, S32K388
+
+Build selects the target via -DTARGET_MCU=<variant> (default: S32K144).
+Toolchain: arm-none-eabi-gcc. Build system: CMake + Ninja.
 Follow .cursor/rules/ for MISRA C and embedded best practices.
-Use arm-none-eabi-gcc and CMake (toolchain: cmake/arm-none-eabi-gcc.cmake).
 Always use volatile for hardware registers. No dynamic allocation in safety paths.

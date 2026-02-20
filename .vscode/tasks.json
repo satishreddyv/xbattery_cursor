@@ -2,27 +2,52 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Configure",
+            "label": "Configure (S32K144)",
             "type": "shell",
             "command": "cmake",
-            "args": ["-B","build","-S",".","-DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake"],
+            "args": ["-B","build/s32k144","-S",".","-DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake","-DTARGET_MCU=S32K144","-G","Ninja"],
             "options": { "cwd": "${workspaceFolder}" },
             "group": "build"
         },
         {
-            "label": "Build",
+            "label": "Configure (S32K344)",
             "type": "shell",
             "command": "cmake",
-            "args": ["--build","build","--config","Debug"],
+            "args": ["-B","build/s32k344","-S",".","-DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake","-DTARGET_MCU=S32K344","-G","Ninja"],
             "options": { "cwd": "${workspaceFolder}" },
-            "group": { "kind": "build", "isDefault": true },
-            "dependsOn": "Configure"
+            "group": "build"
         },
         {
-            "label": "Clean",
+            "label": "Build (S32K144)",
             "type": "shell",
             "command": "cmake",
-            "args": ["--build","build","--target","clean"],
+            "args": ["--build","build/s32k144"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": { "kind": "build", "isDefault": true },
+            "dependsOn": "Configure (S32K144)"
+        },
+        {
+            "label": "Build (S32K344)",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build","build/s32k344"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": "build",
+            "dependsOn": "Configure (S32K344)"
+        },
+        {
+            "label": "Clean (S32K144)",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build","build/s32k144","--target","clean"],
+            "options": { "cwd": "${workspaceFolder}" },
+            "group": "build"
+        },
+        {
+            "label": "Clean (S32K344)",
+            "type": "shell",
+            "command": "cmake",
+            "args": ["--build","build/s32k344","--target","clean"],
             "options": { "cwd": "${workspaceFolder}" },
             "group": "build"
         }
