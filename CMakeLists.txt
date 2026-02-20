@@ -1,8 +1,8 @@
-# Xbattery S32K144 - NXP S32K144 (Cortex-M4F)
+﻿# Xbattery S32K144 - NXP S32K144 (Cortex-M4F)
 # Build: cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=cmake/arm-none-eabi-gcc.cmake
 
 cmake_minimum_required(VERSION 3.10)
-project(xbattery_s32k144 VERSION 0.1.0 LANGUAGES C ASM)
+project(xbattery_cursor VERSION 0.1.0 LANGUAGES C ASM)
 
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -37,3 +37,4 @@ add_custom_command(TARGET ${CMAKE_PROJECT_NAME}.elf POST_BUILD
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Build type" FORCE)
 endif()
+

@@ -8,7 +8,7 @@
             "servertype": "jlink",
             "device": "S32K144",
             "interface": "swd",
-            "executable": "${workspaceFolder}/build/xbattery_s32k144.elf",
+            "executable": "${workspaceFolder}/build/xbattery_cursor.elf",
             "preLaunchTask": "Build",
             "armToolchainPath": "",
             "serverpath": ""
@@ -18,7 +18,7 @@
             "type": "cortex-debug",
             "request": "launch",
             "servertype": "openocd",
-            "executable": "${workspaceFolder}/build/xbattery_s32k144.elf",
+            "executable": "${workspaceFolder}/build/xbattery_cursor.elf",
             "preLaunchTask": "Build",
             "armToolchainPath": "",
             "openOCDLaunchFile": ""

@@ -58,14 +58,14 @@ Optional: in `.vscode/settings.json`, set `C_Cpp.default.compilerPath` to your `
    cmake --build build --config Debug
    ```
 
-Output: `build/xbattery_s32k144.elf` (and optionally `.bin` / `.hex`).
+Output: `build/xbattery_cursor.elf` (and optionally `.bin` / `.hex`).
 
 ## 5. Debug (J-Link)
 
 1. Connect the S32K144 board via J-Link (SWD).
 2. In Cursor, select the launch configuration **Debug (J-Link)** and press **F5** (or Run > Start Debugging).
 
-The **Build** task runs before debug by default. Ensure the executable path in `.vscode/launch.json` matches your build output (e.g. `build/xbattery_s32k144.elf`).
+The **Build** task runs before debug by default. Ensure the executable path in `.vscode/launch.json` matches your build output (e.g. `build/xbattery_cursor.elf`).
 
 ## 6. Optional: toolchain path not on PATH
 
@@ -90,8 +90,8 @@ If the ARM toolchain is not on PATH:
 
 ### Step 1 â€“ Clone the repository
 `powershell
-git clone <repo-url> xbattery-s32k144
-cd xbattery-s32k144
+git clone <repo-url> xbattery_cursor
+cd xbattery_cursor
 `
 
 ### Step 2 â€“ Install all required tools in one command
@@ -115,7 +115,7 @@ Open this folder in Cursor. When prompted, click **Install All** on the recommen
 - ms-vscode.cpptools
 
 ### Step 5 â€“ Build
-Press **Ctrl+Shift+B** (or run task **Build**). Output: uild/xbattery_s32k144.elf.
+Press **Ctrl+Shift+B** (or run task **Build**). Output: uild/xbattery_cursor.elf.
 
 ### Step 6 â€“ Debug
 Install [SEGGER J-Link](https://www.segger.com/downloads/jlink/), connect the S32K144 board via SWD, then press **F5** and select **Debug (J-Link)**.
