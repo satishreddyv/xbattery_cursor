@@ -1,0 +1,4 @@
+﻿This is an NXP S32K144 embedded project for Xbattery.
+Follow .cursor/rules/ for MISRA C and embedded best practices.
+Use arm-none-eabi-gcc and CMake (toolchain: cmake/arm-none-eabi-gcc.cmake).
+Always use volatile for hardware registers. No dynamic allocation in safety paths.

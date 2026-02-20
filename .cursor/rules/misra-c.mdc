@@ -1,0 +1,15 @@
+---
+description: MISRA C guidelines for this project
+globs: "**/*.c,**/*.h"
+alwaysApply: false
+---
+
+# MISRA C Subset (Firmware)
+
+- **No implicit conversions**: Use explicit casts when converting between integer types or signed/unsigned (Rule 10.x).
+- **No magic numbers**: Use named constants or `#define`/`enum` for numeric literals; document units where relevant.
+- **Single exit**: Prefer a single return from functions where practical; use early-exit only when it simplifies logic (Rule 15.x).
+- **No unused code**: Remove dead code and unused variables; use `(void)x` only when intentionally suppressing use (e.g. assert params).
+- **Brace style**: Use braces for all conditional/loop bodies, including single-line (Rule 15.x).
+- **No stdlib abuse**: Avoid unbounded or implementation-dependent use of stdio/string; in embedded code prefer fixed-size buffers and explicit bounds.
+- **One statement per line**: Avoid multiple statements on one line for readability and tooling.

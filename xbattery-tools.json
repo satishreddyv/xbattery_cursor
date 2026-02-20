@@ -1,0 +1,20 @@
+﻿{
+  "$schema": "https://aka.ms/winget-packages.schema.2.0.json",
+  "CreationDate": "2026-02-20",
+  "WinGetVersion": "1.12.460",
+  "Sources": [
+    {
+      "Packages": [
+        { "PackageIdentifier": "Arm.GnuArmEmbeddedToolchain", "PackageVersion": "14.2.Rel1" },
+        { "PackageIdentifier": "Kitware.CMake",               "PackageVersion": "4.2.3" },
+        { "PackageIdentifier": "Ninja-build.Ninja",           "PackageVersion": "1.13.2" }
+      ],
+      "SourceDetails": {
+        "Argument":   "https://cdn.winget.microsoft.com/cache",
+        "Identifier": "Microsoft.Winget.Source_8wekyb3d8bbwe",
+        "Name":       "winget",
+        "Type":       "Microsoft.PreIndexed.Package"
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+﻿{
+    "cmake.buildDirectory": "${workspaceFolder}/build",
+    "cmake.configureSettings": {
+        "CMAKE_TOOLCHAIN_FILE": "${workspaceFolder}/cmake/arm-none-eabi-gcc.cmake"
+    },
+    "C_Cpp.default.compilerPath": "arm-none-eabi-gcc",
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/src",
+        "${workspaceFolder}/startup"
+    ],
+    "C_Cpp.default.cStandard": "c11",
+    "cortex-debug.armToolchainPath": ""
+}
